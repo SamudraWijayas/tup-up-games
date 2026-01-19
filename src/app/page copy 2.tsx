@@ -8,44 +8,19 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-linear-to-b from-[#050b1f] via-[#06122e] to-[#020617] text-white">
       {/* ================= NAVBAR ================= */}
-      <header className="fixed top-0 left-0 z-50 w-full">
-        <div className="bg-[#050b1f]/80 backdrop-blur">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-            {/* Logo */}
-            <div className="flex items-center gap-2 text-xl font-bold">
-              <span className="text-yellow-400">⚡</span>
-              <span>OURA STORE</span>
-            </div>
-
-            {/* Search */}
-            <div className="hidden w-full max-w-md md:block">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search games..."
-                  className="w-full rounded-full bg-white/10 px-5 py-2 text-sm text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-yellow-400"
-                />
-              </div>
-            </div>
-
-            {/* Button */}
-            <button className="rounded-full border border-gray-600 px-4 py-2 text-sm hover:bg-white/10">
-              Check order
-            </button>
+      <header className="fixed top-0 left-0 z-50 w-full bg-[#050b1f]/80 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-2 text-xl font-bold">
+            <span className="text-yellow-400">⚡</span>
+            <span>OURA STORE</span>
           </div>
-        </div>
-        <div className="h-px w-full bg-[#0b1538]/80 backdrop-blur" />
-        <div className="bg-[#050b1f]/80 backdrop-blur pt-2">
-          <div className="mx-auto flex max-w-7xl items-center gap-8 px-6 py-2 text-sm text-gray-300">
+
+          <nav className="hidden items-center gap-8 text-sm text-gray-300 md:flex">
             <Link href="#" className="hover:text-white">
               Home
             </Link>
@@ -58,58 +33,29 @@ export default function HomePage() {
             <Link href="#" className="hover:text-white">
               About
             </Link>
-          </div>
+          </nav>
+
+          <button className="rounded-full border border-gray-600 px-4 py-2 text-sm hover:bg-white/10">
+            Check order
+          </button>
         </div>
       </header>
 
       {/* ================= HERO ================= */}
-      <section className="relative h-screen w-full">
-        {/* Background Image */}
-        <Image
-          src="/images/bg1.jpg"
-          alt="Hero Background"
-          fill
-          priority
-          className="object-cover"
-        />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-[#050b1f]/90 to-transparent" />
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto flex max-w-7xl items-center px-6 pt-34">
+      <section className="relative w-full pt-24">
+        <div className="mx-auto max-w-7xl px-6">
           {/* BANNER */}
-          <div className="relative w-full overflow-hidden rounded-3xl shadow-2xl">
-            <Swiper
-              pagination={{
-                // dynamicBullets: true,
-                clickable: true,
-              }}
-              spaceBetween={30}
-              loop
-              modules={[Autoplay, Pagination]}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              className="h-122"
-            >
-              {banner.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={item.image}
-                      alt={`Banner ${index + 1}`}
-                      fill
-                      priority
-                      className="object-cover"
-                    />
+          <div className="relative h-105 w-full overflow-hidden rounded-3xl shadow-2xl">
+            <Image
+              src="/images/bg1.jpg"
+              alt="Banner"
+              fill
+              priority
+              className="object-cover"
+            />
 
-                    <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {/* Optional overlay */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
           </div>
         </div>
       </section>
@@ -291,21 +237,6 @@ const logos = [
   { src: "/images/logo/logo-pubg.png", alt: "PUBG Mobile" },
   { src: "/images/logo/logo-cod.png", alt: "Call of Duty" },
   { src: "/images/logo/logo-aov.png", alt: "Arena of Valor" },
-];
-
-const banner = [
-  {
-    image: "/images/bg2.jpg",
-  },
-  {
-    image: "/images/bg4.jpg",
-  },
-  {
-    image: "/images/bg3.jpg",
-  },
-  {
-    image: "/images/bg5.jpg",
-  },
 ];
 
 const games = [
