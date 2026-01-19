@@ -190,9 +190,10 @@ export default function HomePage() {
             <div className="max-w-md">
               <h3 className="mb-4 text-lg font-semibold">Oura Store</h3>
               <p className="text-sm text-gray-400 leading-relaxed">
-                Oura Store amet, consectetur adipiscing elit. Risus, luctus ac
-                adipiscing at. Massa senectus commodo amet at scelerisque nec
-                lacus nisi ut praesent morbi nec.
+                Ndes Store adalah platform top up game yang menyediakan layanan
+                cepat, aman, dan terpercaya. Mendukung berbagai game populer
+                dengan proses otomatis serta berbagai metode pembayaran untuk
+                kenyamanan para gamer.
               </p>
               <p className="mt-4 text-sm text-gray-400">
                 Customer Service Whatsapp: <br />

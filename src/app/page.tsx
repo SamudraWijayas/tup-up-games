@@ -23,8 +23,7 @@ export default function HomePage() {
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
             {/* Logo */}
             <div className="flex items-center gap-2 text-xl font-bold">
-              <span className="text-yellow-400">⚡</span>
-              <span>OURA STORE</span>
+              <Image src="/logo-ndes.png" alt="Logo" width={50} height={50} />
             </div>
 
             {/* Search */}
@@ -34,7 +33,7 @@ export default function HomePage() {
 
                 <input
                   type="text"
-                  placeholder="Search games..."
+                  placeholder="Cari Game atau Voucher"
                   className="
       w-full rounded-lg
       bg-[#050b1f]/80
@@ -51,7 +50,7 @@ export default function HomePage() {
             </div>
 
             {/* Button */}
-            <button className="rounded-full border border-gray-600 px-4 py-2 text-sm hover:bg-white/10">
+            <button className="rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/10">
               Check order
             </button>
           </div>
@@ -224,36 +223,66 @@ export default function HomePage() {
           <div className="flex flex-col gap-10 md:flex-row md:justify-between">
             {/* About */}
             <div className="max-w-md">
-              <h3 className="mb-4 text-lg font-semibold">Oura Store</h3>
+              <h3 className="mb-4 text-lg font-semibold">Ndess Store</h3>
               <p className="text-sm text-gray-400 leading-relaxed">
-                Oura Store amet, consectetur adipiscing elit. Risus, luctus ac
-                adipiscing at. Massa senectus commodo amet at scelerisque nec
-                lacus nisi ut praesent morbi nec.
+                Ndes Store is a game top-up platform that provides fast, secure,
+                and reliable service. It supports a variety of popular games
+                with automated processes and various payment methods for
+                gamers&apos; convenience.Ndes Store is a game top-up platform
+                that provides fast, secure, and reliable service. It supports a
+                variety of popular games with automated processes and various
+                payment methods for gamers&apos; convenience.
               </p>
               <p className="mt-4 text-sm text-gray-400">
                 Customer Service Whatsapp: <br />
-                <span className="text-white">+62877-4109-1899</span>
+                <Link
+                  href="https://wa.me/6287718517731"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline"
+                >
+                  +62 877-1851-7731
+                </Link>
               </p>
             </div>
 
-            {/* Maybe You Like */}
+            {/* Sitemap */}
             <div className="max-w-sm">
-              <h3 className="mb-4 text-lg font-semibold">Maybe you like</h3>
+              <h3 className="mb-4 text-lg font-semibold text-white">Sitemap</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li className="hover:text-white cursor-pointer">
-                  Sausage Man - Candy
+                <li className="cursor-pointer transition hover:text-white">
+                  Home
                 </li>
-                <li className="hover:text-white cursor-pointer">
-                  PUBG - INDONESIA
+                <li className="cursor-pointer transition hover:text-white">
+                  Games
                 </li>
-                <li className="hover:text-white cursor-pointer">
-                  Mobile Legends - Diamonds
+                <li className="cursor-pointer transition hover:text-white">
+                  Top Up
                 </li>
-                <li className="hover:text-white cursor-pointer">
-                  Free Fire - Fire Gems
+                <li className="cursor-pointer transition hover:text-white">
+                  Order Status
                 </li>
-                <li className="hover:text-white cursor-pointer">
-                  Chess Rush - Chess Rush
+                <li className="cursor-pointer transition hover:text-white">
+                  Contact
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className="max-w-sm">
+              <h3 className="mb-4 text-lg font-semibold text-white">Legal</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="cursor-pointer transition hover:text-white">
+                  Terms & Conditions
+                </li>
+                <li className="cursor-pointer transition hover:text-white">
+                  Privacy Policy
+                </li>
+                <li className="cursor-pointer transition hover:text-white">
+                  Refund & Cancellation
+                </li>
+                <li className="cursor-pointer transition hover:text-white">
+                  Disclaimer
                 </li>
               </ul>
             </div>
@@ -261,7 +290,7 @@ export default function HomePage() {
 
           {/* Bottom Bar */}
           <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 text-sm text-gray-400 md:flex-row">
-            <p className="font-semibold text-yellow-400">OURA STORE</p>
+            <p className="font-semibold text-yellow-400">NDESS STORE</p>
             <div className="flex gap-6">
               <span className="hover:text-white cursor-pointer">Home</span>
               <span className="hover:text-white cursor-pointer">Games</span>
