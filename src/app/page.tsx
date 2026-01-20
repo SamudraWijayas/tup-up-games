@@ -173,10 +173,18 @@ export default function HomePage() {
       {/* ================= GAME LOGOS ================= */}
       <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid grid-cols-3 items-center gap-6 md:grid-cols-5">
-          {logos.map((logo) => (
-            <div
+          {logos.map((logo, index) => (
+            <motion.div
               key={logo.alt}
               className="flex justify-center opacity-80 transition hover:opacity-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.4,
+                ease: "easeOut",
+              }}
             >
               <Image
                 src={logo.src}
@@ -185,33 +193,56 @@ export default function HomePage() {
                 height={60}
                 className="object-contain"
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
       {/* ================= POPULAR PRODUCTS ================= */}
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="mb-6 flex items-center justify-between">
+        <motion.div
+          className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <div>
             <h2 className="text-2xl font-bold">Popular Now!</h2>
             <p className="text-sm text-gray-400">
               Here are some of the most popular products right now
             </p>
           </div>
-
           {/* <Link
             href="#"
             className="text-sm text-gray-400 transition hover:text-white"
           >
             View All →
           </Link> */}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <motion.div
+          className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
           {popularProducts.map((item) => (
-            <div
+            <motion.div
               key={item.title}
               className="group rounded-xl bg-white/5 p-2 transition hover:bg-white/10"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
                 {/* Gambar */}
@@ -233,18 +264,9 @@ export default function HomePage() {
                   <p className="text-xs text-gray-400">{item.developer}</p>
                 </div>
               </div>
-
-              {/* <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-white">
-                  {item.price}
-                </span>
-                <button className="rounded-lg bg-white/10 px-3 py-1 text-xs transition hover:bg-white/20">
-                  Buy
-                </button>
-              </div> */}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ================= TOP UP ALL GAMES ================= */}
