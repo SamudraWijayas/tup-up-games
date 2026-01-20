@@ -6,6 +6,7 @@ import {
   Gamepad2,
   MousePointerClick,
   Search,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,10 +14,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function HomePage() {
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
   return (
-    <main className="min-h-screen bg-linear-to-b from-[#050b1f] via-[#06122e] to-[#020617] text-white">
+    <main className=" bg-linear-to-b from-[#050b1f] via-[#06122e] to-[#020617] text-white">
       {/* ================= NAVBAR ================= */}
       <header className="fixed top-0 left-0 z-50 w-full">
         <div className="bg-[#050b1f]/80 backdrop-blur">
@@ -48,11 +52,17 @@ export default function HomePage() {
                 />
               </div>
             </div>
-
-            {/* Button */}
-            <button className="rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/10">
-              Check order
-            </button>
+            <div className="flex gap-3 ">
+              <button
+                onClick={() => setShowMobileSearch(!showMobileSearch)}
+                className="rounded-lg border border-white/10 px-2 py-2 text-sm hover:bg-white/10 md:hidden block"
+              >
+                {showMobileSearch ? <X size={20} /> : <Search size={20} />}
+              </button>
+              <button className="rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/10">
+                Check order
+              </button>
+            </div>
           </div>
         </div>
         <div className="h-px w-full bg-[#0b1538]/80 backdrop-blur" />
@@ -72,10 +82,44 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        <AnimatePresence>
+          {showMobileSearch && (
+            <motion.div
+              className="absolute left-0 top-14 z-50 w-full md:hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <div className="bg-[#050b1f]/90 backdrop-blur px-6 py-3">
+                <div className="relative mx-auto w-full max-w-7xl">
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
+
+                  <input
+                    type="text"
+                    placeholder="Cari Game atau Voucher"
+                    className="
+              w-full rounded-lg
+              bg-[#050b1f]/80
+              py-2 pl-11 pr-5
+              text-sm text-white
+              placeholder:text-white/40
+              outline-none
+              ring-1 ring-white/10
+              focus:ring-2 focus:ring-white/30
+              transition
+            "
+                    autoFocus
+                  />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* ================= HERO ================= */}
-      <section className="relative h-screen w-full">
+      <section className="relative min-h-[10vh] md:h-screen w-full">
         {/* Background Image */}
         <Image
           src="/images/bg1.jpg"
@@ -104,7 +148,7 @@ export default function HomePage() {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              className="h-122"
+              className="md:h-122 h-60"
             >
               {banner.map((item, index) => (
                 <SwiperSlide key={index}>
@@ -141,6 +185,58 @@ export default function HomePage() {
                 height={60}
                 className="object-contain"
               />
+            </div>
+          ))}
+        </div>
+      </section>
+      {/* ================= POPULAR PRODUCTS ================= */}
+      <section className="mx-auto max-w-7xl px-6 pb-20">
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold">Popular Now!</h2>
+            <p className="text-sm text-gray-400">
+              Here are some of the most popular products right now
+            </p>
+          </div>
+
+          {/* <Link
+            href="#"
+            className="text-sm text-gray-400 transition hover:text-white"
+          >
+            View All →
+          </Link> */}
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {popularProducts.map((item) => (
+            <div
+              key={item.title}
+              className="group rounded-xl bg-white/5 p-2 transition hover:bg-white/10"
+            >
+              <div className="flex items-center gap-3">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={100}
+                  height={100}
+                  className="w-16 h-16 rounded-lg object-cover"
+                />
+                <div>
+                  <p className="text-sm font-semibold leading-tight">
+                    {item.title}
+                  </p>
+                  <p className="text-xs text-gray-400">{item.developer}</p>
+                </div>
+              </div>
+
+              {/* <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-white">
+                  {item.price}
+                </span>
+                <button className="rounded-lg bg-white/10 px-3 py-1 text-xs transition hover:bg-white/20">
+                  Buy
+                </button>
+              </div> */}
             </div>
           ))}
         </div>
@@ -303,6 +399,38 @@ export default function HomePage() {
     </main>
   );
 }
+const popularProducts = [
+  {
+    title: "Mobile Legends",
+    developer: "Moonton",
+    price: "Rp 20.000",
+    image: "/images/ml.jpeg",
+  },
+  {
+    title: "Free Fire",
+    developer: "Garena",
+    price: "Rp 15.000",
+    image: "/images/ff.jpeg",
+  },
+  {
+    title: "PUBG Mobile",
+    developer: "Tencent Games",
+    price: "Rp 16.000",
+    image: "/images/pubg.png",
+  },
+  {
+    title: "Genshin Impact",
+    developer: "HoYoverse",
+    price: "Rp 17.000",
+    image: "/images/genshin.jpeg",
+  },
+  {
+    title: "Joki Rank",
+    developer: "Ndess Store",
+    price: "Rp 17.000",
+    image: "/images/joki.jpg",
+  },
+];
 
 const steps = [
   {
