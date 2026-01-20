@@ -213,16 +213,21 @@ export default function HomePage() {
               key={item.title}
               className="group rounded-xl bg-white/5 p-2 transition hover:bg-white/10"
             >
-              <div className="flex items-center gap-3">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={100}
-                  height={100}
-                  className="w-16 h-16 rounded-lg object-cover"
-                />
-                <div>
-                  <p className="text-sm font-semibold leading-tight">
+              <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+                {/* Gambar */}
+                <div className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={100}
+                    height={100}
+                    className="h-full w-full rounded-lg object-cover"
+                  />
+                </div>
+
+                {/* Teks */}
+                <div className="flex flex-col justify-center">
+                  <p className="text-xs sm:text-base md:text-lg font-semibold leading-tight">
                     {item.title}
                   </p>
                   <p className="text-xs text-gray-400">{item.developer}</p>
@@ -258,7 +263,7 @@ export default function HomePage() {
               className="group relative overflow-hidden rounded-2xl bg-white/5"
             >
               {/* Image */}
-              <div className="relative h-86 w-full">
+              <div className="relative md:h-86 h-50 w-full">
                 <Image
                   src={game.image}
                   alt={game.title}
